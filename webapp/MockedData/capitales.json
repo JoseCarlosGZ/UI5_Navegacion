@@ -1,0 +1,40 @@
+{
+    "objeto_json_contenedor1": {
+        "objeto_json_contenedor2": [
+            [],
+            [],
+            [
+                {
+                    "comunidad": "Madrid",
+                    "capital": "Madrid",
+                    "n_habitantes": 700
+                },
+                {
+                    "comunidad": "Catalunia",
+                    "capital": "Barcelona",
+                    "n_habitantes": 600
+                },
+                {
+                    "comunidad": "Andalucia",
+                    "capital": "Sevilla",
+                    "n_habitantes": 1000
+                },
+                {
+                    "comunidad": "Canarias",
+                    "capital": "Las Palmas",
+                    "n_habitantes": 550
+                },
+                {
+                    "comunidad": "Galicia",
+                    "capital": "Santiago de Compostela",
+                    "n_habitantes": 321
+                },
+                {
+                    "comunidad": "Castilla La Mancha",
+                    "capital": "Toledo",
+                    "n_habitantes": 598
+                }
+            ]
+        ]
+    }
+}

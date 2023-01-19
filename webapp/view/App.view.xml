@@ -1,0 +1,15 @@
+<mvc:View controllerName="com.accenture.navegacion_ui.controller.App" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m">
+    <!-- 
+    OJO. este archivo es la vista que se crea por defecto en una aplicación UI5. La etiqueta shell se puede borrar, 
+    pero la etiqueta App no se puede borrar porque está referenciada en el manifest y se necesita para cargar la aplicación
+    -->
+    <Shell>
+        <App id="app">
+            <pages>
+                <Page id="page" title="{i18n>title}">
+                    <content />
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

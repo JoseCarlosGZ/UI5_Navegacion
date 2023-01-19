@@ -1,0 +1,122 @@
+ {
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "com.accenture.navegacion_ui",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.3",
+      "toolsId": "ee490d41-3d8d-45a7-b506-a44345b70535"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": false,
+    "dependencies": {
+      "minUI5Version": "1.109.3",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "com.accenture.navegacion_ui.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.m.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "com.accenture.navegacion_ui.view",
+        "controlAggregation": "pages",
+        "controlId": "app",
+        "clearControlAggregation": false
+      },
+      "routes": [
+        {
+          "name": "Manifest_route_name_Main",
+          "pattern": "",
+          "target": ["Main"]
+      }, {
+          "name": "Manifest_route_name_Secundary",
+          "pattern": "Secundary",
+          "target": ["Secundary"]
+      }
+      ],
+      "targets": {
+        "Main": {
+          "viewType": "XML",
+          "viewName": "Main"
+      },
+      "Secundary": {
+          "viewType": "XML",
+          "viewName": "Secundary"
+      }
+      }
+    },
+    "rootView": {
+      "viewName": "com.accenture.navegacion_ui.view.App",
+      "type": "XML"
+    }
+  }
+}

@@ -1,0 +1,31 @@
+<mvc:View 
+    controllerName="com.accenture.navegacion_ui.controller.Main" 
+    xmlns:mvc="sap.ui.core.mvc" 
+    xmlns="sap.m"
+>
+
+	
+
+
+        <Page  title="{i18n>titulo_vista_main}" >
+            <content  >
+                <VBox >
+                    <Button id="id_btn_toast" press="funcion_boton1" text="{i18n>boton1_value}"></Button>
+                    <Button press="funcion_boton2" text="{i18n>boton2_value}"></Button>
+                    <HBox>
+                    <Input
+                        id="id_miInput"
+                        value="10"
+                        description="Componente sap.m.input de la vista Main.view.xml y con id=&quot;id_miInput&quot;"
+                        width="600px"
+                        fieldWidth="10%" 
+                        class="sapUiSmallMarginBottom"
+                    />
+                    <!-- fieldWidth="10%" define que la anchura del input será un 10% de su width="600px", es decir 100px, dejando los 500px restantes para la descripción del input -->
+                    </HBox>
+                </VBox>
+            </content>
+        </Page>
+
+
+</mvc:View>

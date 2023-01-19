@@ -1,0 +1,99 @@
+<!-- <mvc:View
+    controllerName="com.accenture.navegacion.controller.Secundary"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+>
+        <Page  title="{i18n>titulo_vista_secundary}">
+            <content>
+                <Button press="funcion_boton3" text="{i18n>boton3_value}"></Button>
+            </content>
+        </Page>
+
+</mvc:View> -->
+
+<!-- En el atributo controllerName de la etiqueta View, indicamos la ruta del controlador que maneja esta vista -->
+<!--
+ Para cargar los componentes en una vista, tenemos que asignarle un alias, eso es porque hay componentes que se llaman
+igual en distintas librerias. Ejemplo, hay componentes 'table' tanto en la librería sap.ui como en sap.m.
+Estos alias los definimos en la intrucción de cabecera de la vista.
+ Por ejemplo en este caso hemos dado el alias 'mvc' a toda la librería "sap.ui.core.mvc" y también le hemos asignado el alias 
+ "mitabla" sólo al componente "sap.ui.table".
+Entonces cuando vayamos a usar algún componente de la librería 'sap.ui' tendremos que abrir una etiqueta con el prefijo mvc seguido
+de dos puntos y el nombre del componente sap.ui a usar <mvc:componente_de_la_libreria_sap.ui />
+En este caso si queremos usar el componente Table que pertenece a la clase "sap.ui.table", entonces tendremos que poner 
+una etiqueta del tipo <mitabla:Table ></mitabla:Table>
+  -->
+<mvc:View controllerName="com.accenture.navegacion_ui.controller.Secundary" 
+xmlns="sap.m"
+xmlns:mvc="sap.ui.core.mvc"
+xmlns:mitabla="sap.ui.table"
+>
+
+
+<Shell>
+    <Page  title="{i18n>titulo_vista_secundary}"  >
+        <content  >
+    <Panel width="auto" expandable="true" headerText="Soy la propieda header del control Panel">
+             <Button press="funcion_boton3" text="{i18n>boton3_value}" class="sapUiTinyMarginBottom sapUiTinyMarginEnd"></Button>
+             <Button id="id_btn_cargar" press="guardaJsonEnObjeto" text="Cargar datos de capitales.json" class="sapUiTinyMarginBottom"></Button>
+            <!-- Vamos a insertar una tablar tipo grid table -->
+            <!-- https://sapui5.hana.ondemand.com/#/entity/sap.ui.table.Table/sample/sap.ui.table.sample.Basic -->
+            <!-- Vamos a usar un componente 'Table' de la sub-librería "sap.ui.table"  -->
+
+            <!-- En la propiedad rows="" del componente 'Table' es donde bindeamos un modelo de datos con la tabla -->
+            <!-- Para NAVEGAR dentro de los niveles de un json primero tenemos que poner una / como también se hace
+            en xml, es decir, a la raiz de un json se accede con la / y después ir bajando niveles hasta el deseado.
+            En nuestro caso, los elementos de capitals.json que nos interesan están dentro de la tercera array que a su vez está
+            dentro del objeto_json_contenedor2, que a su vez está dentro del objeto_json_contenedor1.
+            OJO. Como nuestros datos están en el elemento 3 del array y el elemento primero empieza a contar por 0, tenemos
+            que poner 2.
+              -->
+            <mitabla:Table 
+            
+            id="id_miTabla"
+            selectionMode="None"
+            rows="{alias_oObjetoContenedorDatosJson>/objeto_json_contenedor1/objeto_json_contenedor2/2}"  
+            visibleRowCount="{= ${alias_oObjetoContenedorDatosJson>/objeto_json_contenedor1/objeto_json_contenedor2/2/}.length}" >
+            <!-- La propiedad 'visibleRowCount' se usa para indicar el nº de filas visibles en un componente Table, el para ver el resto
+            de filas se tendrá que hacer un schroll vertical. Como dicha propiedad requiere un entero, lo que le hemos metido es
+            una 'expresion binding' ligada a la matriz de datos que vamos a recoger y hemos leido la long de dicha array  -->
+
+                <mitabla:columns>
+                    <!-- sortProperty es una propiedad del elemento columna:
+                    sortProperty="Key por la que queremos ordenar alfabéticamenteen esta columna" 
+                    -->
+                    <mitabla:Column sortProperty="comunidad"  >
+                        <!-- A la etiqueta label no tenemos que ponerle alias, ya que la etiqueta label pertenece a la librería sap.m y nosotros no le hemos asignado ningún alias a la cabecera de este archivo. xmlns="sap.m" -->
+                        <Label text="{i18n>label_columna_comunidad_autonoma}" />
+                        <mitabla:template>
+							<Text text="{alias_oObjetoContenedorDatosJson>comunidad}" wrapping="false" />
+						</mitabla:template>
+                    </mitabla:Column>
+
+                    <!-- filterProperty es una propiedad del elemento columna:
+                    filterProperty="Key/clase del json por el que queremos filtrar"
+                     -->
+                    <mitabla:Column filterProperty="capital">
+                        <!-- A la etiqueta label no tenemos que ponerle alias, ya que la etiqueta label pertenece a la librería sap.m y nosotros no le hemos asignado ningún alias a la cabecera de este archivo. xmlns="sap.m" -->
+                        <Label text="{i18n>label_columna_capital}" />
+                        <mitabla:template>
+							<Text text="{alias_oObjetoContenedorDatosJson>capital}" wrapping="false" />
+						</mitabla:template>
+                    </mitabla:Column>
+
+                    <mitabla:Column sortProperty="n_habitantes" filterProperty="n_habitantes" >
+                        <Label text="{i18n>label_columna_habitantes}" />
+                        <mitabla:template>
+							<Text text="{alias_oObjetoContenedorDatosJson>n_habitantes}" wrapping="false" />
+						</mitabla:template>
+                    </mitabla:Column>
+                </mitabla:columns>
+            
+            </mitabla:Table>
+</Panel>
+        </content>
+    </Page>
+ 
+
+</Shell>
+</mvc:View>
